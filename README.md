@@ -57,3 +57,5 @@ Hi there <character.player>!
 ```
 
 
+## Want to contribute and improve!
+I welcome anyone to improve on this concept there somethings feel free to make a pull request or open an issue so I can improve it! 
