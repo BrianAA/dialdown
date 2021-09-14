@@ -55,7 +55,8 @@ There is support to swap out variables for the text of your choice. If need thin
 ```
 Hi there <character.player>!
 ```
-
+## Using VScode
+Not required but highly reccomended to utilize VScode snippets. They help write out dialogue a lot faster I simply pull up the snippet and it will drop inplace the thing that I need question with 2, 3, or 4 options etc. Highly recommend it! Write your own following the format or using [snippet generator](https://snippet-generator.app/)
 
 ## Want to contribute and improve!
 I welcome anyone to improve on this concept there somethings feel free to make a pull request or open an issue so I can improve it! 
