@@ -1,0 +1,182 @@
+{
+	// Format helpers
+	"option-4": {
+		"prefix": "option 4 ",
+		"body": [
+		  "## Type out your question",
+		  "1. Type your option",
+		  "  - Nested Response add more '-' based on nested depth",
+		  "2. Type your option",
+		  "  - Nested Response add more '-' based on nested depth",
+		  "3. Type your option",
+		  "  - Nested Response add more '-' based on nested depth",
+		  "4. Type your option",
+		  "  - Nested Response add more '-' based on nested depth"
+		],
+		"description": "A question with 4 options"
+	  },
+	  "option-3": {
+		"prefix": "option 3 ",
+		"body": [
+		  "## Type out your question",
+		  "1. Type your option",
+		  "  - Nested Response add more '-' based on nested depth",
+		  "2. Type your option",
+		  "  - Nested Response add more '-' based on nested depth",
+		  "3. Type your option",
+		  "  - Nested Response add more '-' based on nested depth",
+		],
+		"description": "A question with 3 options"
+	  },
+	  "option-2": {
+		"prefix": "option 2 ",
+		"body": [
+		  "## Type out your question",
+		  "1. Type your option",
+		  "  - Nested Response add more '-' based on nested depth",
+		  "2. Type your option",
+		  "  - Nested Response add more '-' based on nested depth",
+		],
+		"description": "A question with 2 options"
+	  },
+	// Custom events to fire.
+	"plusFriendship":{
+		"scope": ".md,markdown",
+		"prefix": "event Plus 1 friendship",
+		"body":[
+			"<event.plusFriendship>"
+		],
+		"description": "Invokes Friendship method and adds friendship"
+	},
+	"minusFriendship":{
+		"scope": ".md,markdown",
+		"prefix": "event Minus 1 friendship",
+		"body":[
+			"<event.minusFriendship>"
+		],
+		"description": "Invokes Friendship method and adds friendship"
+	},
+	"endConvo": {
+		"prefix": "End Convo",
+		"body": [
+			"<event.end>"
+		],
+		"description": "Will end a convo as soon as it fires."
+	  },
+
+	// Characters to reference
+	"player":{
+		"scope": ".md,markdown",
+		"prefix": "character player",
+		"body":[
+			"<character.player>"
+		],
+		"description": "References Player name"
+	},
+	"Samuel":{
+		"scope": ".md,markdown",
+		"prefix": "character samuel",
+		"body":[
+			"<character.samuel>"
+		],
+		"description": "References Samuel name"
+	},
+
+	// Location
+	"centerCity":{
+		"scope": ".md,markdown",
+		"prefix": "location center city",
+		"body":[
+			"<location.centerCity>"
+		],
+		"description": "References the location center city"
+	},
+
+	// Reactions and Emotions
+	"sad":{
+		"scope": ".md,markdown",
+		"prefix": "emotion sad",
+		"body":[
+			"<emotion.sad>"
+		],
+		"description": "Set reaction to sad"
+	},
+	"happy":{
+		"scope": ".md,markdown",
+		"prefix": "emotion happy",
+		"body":[
+			"<emotion.happy>"
+		],
+		"description": "Set reaction to happy"
+	},
+	"love":{
+		"scope": ".md,markdown",
+		"prefix": "emotion love",
+		"body":[
+			"<emotion.love>"
+		],
+		"description": "Set reaction to love"
+	},
+
+
+	// These control all font sizes. For more sizes simply add here
+	"fontBig":{
+		"scope": ".md,markdown",
+		"prefix": "font big",
+		"body":[
+			"<font.big>"
+		],
+		"description": "Sets the font to large size for emphasis"
+	},
+	"fontDefault":{
+		"scope": ".md,markdown",
+		"prefix": "font default",
+		"body":[
+			"<font.default>"
+		],
+		"description": "Sets the font to default size"
+	},
+	"fontSmall":{
+		"scope": ".md,markdown",
+		"prefix": "font small",
+		"body":[
+			"<font.small>"
+		],
+		"description": "Sets the font to small size"
+	},
+
+	//Text speed
+	"fast":{
+		"scope": ".md,markdown",
+		"prefix": "speed fast",
+		"body":[
+			"<speed.fast>"
+		],
+		"description": "Sets text playback to fast"
+	},
+	"normal":{
+		"scope": ".md,markdown",
+		"prefix": "speed normal",
+		"body":[
+			"<speed.normal>"
+		],
+		"description": "Sets text playback to normal"
+	},
+	"slow":{
+		"scope": ".md,markdown",
+		"prefix": "speed slow",
+		"body":[
+			"<speed.slow>"
+		],
+		"description": "Sets text playback to slow"
+	},
+	//Jumps to text line
+	"jumpTo":{
+		"scope": ".md,markdown",
+		"prefix": "Jump to line number",
+		"body":[
+			"<jump.#>"
+		],
+		"description": "Jumps to specified line number"
+	},
+}
