@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Chatdown : MonoBehaviour
 {
-    public TextAsset convoFile; //file to read
+    public TextAsset convoFile; //text file to read should pass files via script
     private string[] reader; //String reader
     int currentRow = 0; //current line being read
     string ReadText; //Text that is read by string reader
@@ -39,7 +39,6 @@ public class Chatdown : MonoBehaviour
     {
         //splits the entire convo up
         reader = convoFile.text.Split(new[] { System.Environment.NewLine }, System.StringSplitOptions.None);
-        Stopwatch.Start();
         ReadConvo();
     }
     /// <summary>
@@ -193,17 +192,6 @@ public class Chatdown : MonoBehaviour
     int setDepth(string Line)
     {
         return Regex.Matches(Line, "- ").Count; //Checks and returns depth of line
-    }
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Keypad1))
-        {
-            SelectOption(1);
-        }
-        if (Input.GetKeyDown(KeyCode.Keypad2))
-        {
-            SelectOption(2);
-        }
     }
 }
 
