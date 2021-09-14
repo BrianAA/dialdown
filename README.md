@@ -1,8 +1,8 @@
 # Chatdown
-A simple dialogue system for unity. It utilizes a simple text format with keys and events to feed information into a script to handle the entire conversation. The name comes from markdown as the formatting of the file uses markdown type keys only the inline actions utilize `<>` to seperate from the the rest of the text.
+A simple dialogue system for unity. It utilizes a simple text format with keys and events to feed information into a script to handle the entire conversation. The name comes from markdown as the formatting of the file uses markdown type keys only the inline actions and variables utilize `<>` to seperate from the the rest of the text.
 
 ## Getting started
-If you like to use Chatdown simply drag and drop the main script `Chatdown.cs` to your game folder. In order to use it you will need to drag and drop it onto a game object. It will then take any TextAsset convert it to text split it up and handle the conversation based on the information of each line.
+If you like to use Chatdown simply drag and drop the main script `Chatdown.cs` to your asset folder (probably best in a script folder). In order to use it you will need to drag and drop it onto a game object. It will then take any TextAsset convert it to text split it up and handle the conversation based on the information of each line.
 
 ## Writing out dialogue
 There are three dialogue types: `questions` `options` and `basic` and everything is controlled by `-` which will indicate the current depth and thread.
