@@ -20,7 +20,7 @@ public class Chatdown : MonoBehaviour
     enum actionType { isEvent, isEmotion, isFont, isSpeed, isJump, noAction }; //nested action types in string
 
     //Cache regex for performance
-    private static Regex regexOptions = new Regex("[0-9]. ", RegexOptions.Compiled);
+    private static Regex regexOptions = new Regex(" [0-9]. ", RegexOptions.Compiled);
     private static Regex regexQuestion = new Regex("## ", RegexOptions.Compiled);
     private static Regex regexPlayerName = new Regex("<character.player>", RegexOptions.Compiled);
     private static Regex regexFormater = new Regex("- ", RegexOptions.Compiled);
