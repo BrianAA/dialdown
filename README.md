@@ -48,6 +48,13 @@ I am not yelling... <font.big> Now I am yelling!
 ```
 In this example the action will invoke after `...` and then the text will be big.
 
+### Jump action
+Jump action is powerful action built into chatdown. It lets you jump to any line even if its a line that was read before. This can be helpful for repeating options or dialgoue like a store clerk or the user needs to go back options. 
+
+```
+
+```
+
 ### Replacing variables
 There is support to swap out variables for the text of your choice. If need things to be dynamic like the name of the character because it will vary from player to player then using variables will definitely be something you want to make use of. To use any variable you need to set up a regex pattern simialr to the event pattern using `<variable.` Currently there is support built in for `<character.playyer>` and will swap it out whenever it is used with the player name. 
 
