@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Chatdown : MonoBehaviour
 {
-    public TextAsset convoFile; //file to read
+    public TextAsset convoFile; //file to read for testing
     private string[] reader; //String reader
     int currentRow = 0; //current line being read
     int prevRowIndex = -1;//inital value is not positive
@@ -15,8 +15,8 @@ public class Chatdown : MonoBehaviour
     public List<int> currentOptions = new List<int>();//stores current options and what row number they are on
     int currentDepth = 0;//Current thread to focus
     [System.Serializable]
-    public enum stateOfDialogue { awaitingReponse, buildingOptions, chatting, jumping }; //states
-    bool endOfThread = false;
+    public enum stateOfDialogue { awaitingReponse, buildingOptions, chatting, jumping,endOfDialogue}; //states
+    bool endOfThread = false; //sets if it is an end of a thread
     public stateOfDialogue dialogueState = stateOfDialogue.chatting; //dialuge state
 
     enum actionType { isEvent, isEmotion, isFont, isSpeed, isJump, noAction }; //nested action types in string
@@ -61,25 +61,26 @@ public class Chatdown : MonoBehaviour
         bool ValidLine = currentRow < reader.Length;
         //Reads until there is nothing left to read
 
-        //Checks if its end of data
+        //Checks if its end of data and not repeating the same line
         if (ValidLine && currentRow != prevRowIndex)
         {
             ReadText = reader[currentRow];//gets the next line
             prevRowIndex = currentRow;//Stores to ensure there are no infinite loops
             int lineDepth = Regex.Matches(ReadText, "- ").Count; //Checks depth of line
+
             //Ensures string is correct depth
             if (lineDepth == currentDepth && //If it has the same depth of current thread
+                dialogueState!=stateOfDialogue.endOfDialogue && //not the end of the dialogue
                 dialogueState != stateOfDialogue.awaitingReponse && //is not awaiting a response
                 dialogueState != stateOfDialogue.jumping) // Currently jumping to new line
             {
-
                 string prepString = prepareLineofText(ReadText); //replaces string variables
 
                 if (regexQuestion.IsMatch(prepString)) //checks if a question
                 {
                     prepString = regexQuestion.Replace(prepString, ""); //removes ##
                     dialogueState = stateOfDialogue.buildingOptions; //sets state to build options
-                    currentQuestion=currentQuestion == "" ? currentQuestion = prepString : currentQuestion;
+                    currentQuestion=currentQuestion == "" ? currentQuestion = prepString : currentQuestion; //stores questions and looks for options
                 }
                 else if (regexOptions.IsMatch(prepString))//if its not a question
                 {
@@ -91,8 +92,8 @@ public class Chatdown : MonoBehaviour
                     //if currently building option and reaches a line that is not an option
                     if (dialogueState == stateOfDialogue.buildingOptions)
                     {
-                            dialogueState = stateOfDialogue.awaitingReponse;
-                            ExecuteString(currentQuestion);
+                            dialogueState = stateOfDialogue.awaitingReponse; //set to awaiting the reponse show options
+                            ExecuteString(currentQuestion); //Display question
                     }
                     //Not an option or a question and not waiting for options just plain message
                     else
@@ -114,12 +115,6 @@ public class Chatdown : MonoBehaviour
             //handles lines not in the current thread
             else
             {
-                //Only if the linedepth is less than the current depth will be an end of a thread
-                if (lineDepth < currentDepth && !endOfThread)
-                {
-                    endOfThread = true;
-
-                }
                 currentRow++;//proceed to next row
                 ReadConvo(); //repeat
             }
@@ -169,7 +164,6 @@ public class Chatdown : MonoBehaviour
             {
                 case actionType.isEvent:
                     HandleEvent(splitStrings[i]);
-                    Debug.Log("Executed action");
                     break;
                 case actionType.isEmotion:
                     Debug.Log("Triggered Emotion");
@@ -184,9 +178,9 @@ public class Chatdown : MonoBehaviour
                     dialogueState = stateOfDialogue.jumping;
                     MatchCollection matches = selectNumber.Matches(splitStrings[i]);
                     string stringToParse = "";
+
                     foreach (Match m in matches)
                     {
-                        Debug.Log(m.Value);
                         stringToParse = stringToParse + m.Value;
                     }
                     if (stringToParse != "")
@@ -215,10 +209,19 @@ public class Chatdown : MonoBehaviour
 
     void HandleEvent(string eventName)
     {
-        Debug.Log("Event name is:"+eventName);
-        if (eventName == "<event.endThread>")
+        //handles if the dialogue comes to an end
+        if(eventName=="<event.end>")
         {
-            endOfThread = true;
+            Debug.Log("Ending Dialogue");
+            dialogueState = stateOfDialogue.endOfDialogue;//Sets dialogue to end close out
+        }
+        else
+        {
+            string splitString = eventName.Split('.')[1];
+            string methodToInvoke = splitString.Substring(0, splitString.Length - 1);
+            Debug.Log("Invoking " + methodToInvoke);
+
+
         }
     }
     void Update()
@@ -231,7 +234,9 @@ public class Chatdown : MonoBehaviour
         {
             SelectOption(2);
         }
+        if (Input.GetKeyDown(KeyCode.Keypad3))
+        {
+            SelectOption(3);
+        }
     }
 }
-
-
