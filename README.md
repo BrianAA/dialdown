@@ -26,12 +26,17 @@ Questions and options are always paired together a question can never appear wit
   - Nested Response add more '-' based on nested depth
   - ## Nested question
   - 1. Nested option will go here
+    - Nested response
+    - <event.endThread>
   - - Nested response when that nested question is selected
   - ## Second Nested question
   - 2. Nested option will go here
+    - Nested response
+    - <event.endThread>
   - - Nested response when that nested question is selected
 2. Type your option
   - Nested Response add more '-' based on nested depth
+  - <event.endThread>
  ```
 #### Basic text
 ```
@@ -52,7 +57,25 @@ In this example the action will invoke after `...` and then the text will be big
 Jump action is powerful action built into chatdown. It lets you jump to any line even if its a line that was read before. This can be helpful for repeating options or dialgoue like a store clerk or the user needs to go back options. 
 
 ```
-
+Wow look who it is <character.player>
+## How can I help you?
+ 1. I want to buy some stuff
+    - Sorry I have nothing to sell
+    - Event end
+    - <event.endThread>
+ 2. I want to sell some stuff
+    - Great! Let see what you got <event.sell>
+    - ## That will be <event.calculate> sound good?
+    - 1. Sure!
+    - - <event.sold>
+    - - <event.endThread>
+    - 2. No thanks Ill keep my stuff
+    - - <event.cancelSale>
+    - - <jump.16>
+ 3. Oh nevermind...
+    - <event.end> 
+## Anything else I can help you with?
+<jump.3>
 ```
 
 ### Replacing variables
