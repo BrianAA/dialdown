@@ -115,7 +115,8 @@ Wow look who it is <character.player>
     - Sorry I have nothing to sell
     - <event.end>
  2. I want to sell some stuff
-    - Great! Let see what you got <event.sell>
+    - Great! Let see what you got 
+    - <event.sell>
     - ## That will be <event.calculate> sound good?
     - 1. Sure!
     - - <event.sold>

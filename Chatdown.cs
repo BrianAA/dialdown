@@ -26,6 +26,7 @@ public class Chatdown : MonoBehaviour
     private static Regex regexQuestion = new Regex("## ", RegexOptions.Compiled);
     private static Regex regexPlayerName = new Regex("<character.player>", RegexOptions.Compiled);
     private static Regex regexFormater = new Regex("- ", RegexOptions.Compiled);
+    private static Regex regexTrimmer = new Regex(@"^\s+", RegexOptions.Compiled);
     private static Regex regexEvent = new Regex("<event.*?>", RegexOptions.Compiled);
     private static Regex regexEmotion = new Regex("<emotion.*?>", RegexOptions.Compiled);
     private static Regex regexSpeed = new Regex("<speed.*?>", RegexOptions.Compiled);
@@ -155,6 +156,7 @@ public class Chatdown : MonoBehaviour
         string prepString = regexFormater.Replace(ReadText, "");//Removes '- ' from text
         prepString = regexPlayerName.Replace(prepString, "Player");// Replaces with characters name
         prepString = regexVariable.IsMatch(prepString) ? HandleVariable(prepString) : prepString;
+        prepString= regexTrimmer.Replace(prepString, ""); //Removes any leading whitesspace
         return prepString;
     }
 
